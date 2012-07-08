@@ -4,6 +4,8 @@ by Amir Elaguizy <aelaguiz@gmail.com>.
 This does not attempt to implement the executable version, instead it is a 
 simple API that may be used from within python applications.
 
+This is dependent upon the python fabric module. 
+
 DISCLAIMER
 ----------
 This is a reasonably faithful port for a half day job, but it isn't complete.
