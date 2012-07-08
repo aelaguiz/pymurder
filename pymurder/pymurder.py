@@ -3,14 +3,11 @@ from fabric.state import env
 
 from arghandler import ArgHandler
 
-import logging
 import string
 
 class PyMurder:
     def __init__(self, argDict):
-        logging.basicConfig(level=logging.DEBUG)
         self.args = ArgHandler(argDict)
-        print argDict
         pass
 
     def create_torrent(self, tag, files_path):
@@ -94,7 +91,6 @@ class PyMurder:
             env.host_string = host
 
             with fapi.settings(**args):
-                print "Distributing to", host
                 fapi.run("mkdir -p %s/" % self.args.remoteMurderPath())
                 fapi.run("[ $(find '%s/'* | wc -l ) -lt 1000 ] && rm -rf '%s/'* || "
                         "(echo 'Cowardly refusing to remove files! Check the "
@@ -138,7 +134,6 @@ class PyMurder:
                     if 'run' == type:
                         tpl = string.Template(command[1])
                         cmd = tpl.substitute(PYMURDER_HOST=host)
-                        print cmd
                         fapi.run(cmd)
                     elif 'get' == type:
                         fapi.get(command[1], command[2])
